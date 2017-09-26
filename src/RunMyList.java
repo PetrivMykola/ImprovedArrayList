@@ -7,18 +7,17 @@ public class RunMyList {
         MyList myList = new MyList();
 
         myList.add(1);
-        myList.add(2);
-        myList.add(3);
-        myList.add(4);
         myList.add(null);
-        myList.add(2, 6);
-        myList.remove(2);
+
+      //  myList.add(null);
+       // myList.add(2, 6);
+       // myList.remove(-1);
 
         System.out.println(myList);
-        System.out.println("max value " + myList.findMaxValue());
+        /*System.out.println("max value " + myList.findMaxValue());
         System.out.println("min value " + myList.findMinValue());
         System.out.println("sum " + myList.avarageSum());
-        System.out.println("index " + myList.findIndexByValue(5));
+        System.out.println("index " + myList.findIndexByValue(5));*/
 
 
     }

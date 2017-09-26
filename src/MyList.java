@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class MyList extends ArrayList<Integer> {
+
+    Scanner in = new Scanner(System.in);
 
     public MyList() {
         super();
@@ -15,14 +18,14 @@ public class MyList extends ArrayList<Integer> {
     public boolean add(Integer value) {
         try {
             if (value == null) throw new NullPointerException("Value can not be null");
-            else {
-                for (int i = 0; i < size(); i++) {
+
+        }catch (NullPointerException e ) {
+            System.out.println("Please enter value not null");
+            value = in.nextInt();
+        }
+            for (int i = 0; i < size(); i++) {
                     set(i, get(i) + value);
                 }
-            }
-        }catch (NullPointerException e ) {
-                System.out.println(e.getMessage());
-        }
             return super.add(value);
         }
 
@@ -31,15 +34,14 @@ public class MyList extends ArrayList<Integer> {
     public void add(int index, Integer element) {
         try {
             if (element == null) throw new NullPointerException("Element can not be null");
-            else {
-                for (int i = 0; i < size(); i++) {
-                    set(i, get(i) + element);
-                }
-            }
-        }catch (NullPointerException e ) {
-            System.out.println(e.getMessage());
 
+        }catch (NullPointerException e ) {
+            System.out.println("Please enter value not null");
+            element = in.nextInt();
         }
+            for (int i = 0; i < size(); i++) {
+                set(i, get(i) + element);
+                }
             super.add(index, element);
         }
 
@@ -48,15 +50,14 @@ public class MyList extends ArrayList<Integer> {
         try {
             if (value == null) throw new NullPointerException("Value can't be null: " +
                     value);
-            else {
+        }catch (NullPointerException e) {
+            System.out.println("Please enter value not null");
+            value = in.nextInt();
+        }
                 for (int i = 0; i < size(); i++) {
                     set(i, ((int) get(i) - (int) value));
                 }
-            }
-        }catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-        }
-            return super.remove(value);
+        return super.remove(value);
         }
 
 
@@ -70,13 +71,12 @@ public class MyList extends ArrayList<Integer> {
         try {
             if (value == null) throw new NullPointerException("Value can't be null: " +
                     value);
-            else {
-                for (int i = 0; i < this.size(); i++) {
-                    if (this.get(i).equals(value)) findedIndex = i;
-                }
-            }
         }catch (NullPointerException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Please enter value not null");
+            value = in.nextInt();
+        }
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).equals(value)) findedIndex = i;
         }
         return findedIndex;
     }
@@ -86,7 +86,8 @@ public class MyList extends ArrayList<Integer> {
         try {
             if (index == -1) throw new MyException("uncorrect index");
         } catch (MyException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Please enter correct index > 0 ");
+            index = in.nextInt();
         }
         return super.get(index);
     }
@@ -94,9 +95,10 @@ public class MyList extends ArrayList<Integer> {
     @Override
     public Integer remove(int index){
         try {
-            if (index == -1) throw new MyException("uncorrect index");
+            if (index == -1) throw new MyException("uncorrect index -1");
         } catch (MyException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Please enter correct index > 0 ");
+            index = in.nextInt();
         }
         Integer el = get(index);
 
